@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /librarian/
-Disallow: /admin/
-Disallow: /student/
-Disallow: /employee/
-
-Sitemap: https://libradesk.app/sitemap.xml
