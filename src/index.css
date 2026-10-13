@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * LibraDesk design system
+ * Light: warm paper surfaces + deep indigo brand + amber accent.
+ * Dark:  deep slate canvas with elevated panels (no neon, no glass overload).
+ */
+@layer base {
+  :root {
+    --background: 210 40% 99%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 245 58% 51%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 245 80% 96%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 222 40% 20%;
+
+    --muted: 220 22% 96%;
+    --muted-foreground: 220 12% 46%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 30 60% 14%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 158 64% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 32 95% 44%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 205 82% 46%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 245 58% 51%;
+
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 222 34% 22%;
+    --sidebar-accent: 245 80% 97%;
+    --sidebar-border: 220 20% 91%;
+
+    --paper: 40 45% 97%;
+    --paper-ink: 25 30% 22%;
+
+    --radius: 0.85rem;
+  }
+
+  .dark {
+    --background: 224 40% 7%;
+    --foreground: 210 30% 96%;
+
+    --card: 224 34% 10%;
+    --card-foreground: 210 30% 96%;
+
+    --popover: 224 34% 11%;
+    --popover-foreground: 210 30% 96%;
+
+    --primary: 245 70% 65%;
+    --primary-foreground: 226 60% 10%;
+    --primary-soft: 245 40% 20%;
+
+    --secondary: 223 24% 16%;
+    --secondary-foreground: 210 30% 94%;
+
+    --muted: 223 22% 16%;
+    --muted-foreground: 218 16% 66%;
+
+    --accent: 38 92% 58%;
+    --accent-foreground: 26 60% 10%;
+
+    --destructive: 0 68% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 158 56% 46%;
+    --success-foreground: 160 80% 8%;
+
+    --warning: 32 92% 56%;
+    --warning-foreground: 30 80% 10%;
+
+    --info: 205 80% 60%;
+    --info-foreground: 205 80% 10%;
+
+    --border: 223 22% 20%;
+    --input: 223 22% 20%;
+    --ring: 245 70% 65%;
+
+    --sidebar: 224 38% 9%;
+    --sidebar-foreground: 210 26% 92%;
+    --sidebar-accent: 245 30% 18%;
+    --sidebar-border: 223 22% 18%;
+
+    --paper: 34 18% 90%;
+    --paper-ink: 28 24% 18%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+
+  /* Scrollbars — subtle, matches the theme */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  *::-webkit-scrollbar { width: 10px; height: 10px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--muted-foreground) / 0.5); }
+}
+
+@layer components {
+  .seat-floor {
+    @apply rounded-2xl border border-dashed border-border bg-muted/25 p-4 sm:p-5;
+    background-image: radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0);
+    background-size: 18px 18px;
+    background-position: -1px -1px;
+  }
+  .surface {
+    @apply rounded-xl border border-border bg-card shadow-sm;
+  }
+  .surface-hover {
+    @apply transition-all duration-300 hover:shadow-md hover:border-primary/25;
+  }
+  .section {
+    @apply py-20 sm:py-24 lg:py-28;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground backdrop-blur;
+  }
+  .display-heading {
+    @apply text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-[3.4rem];
+  }
+  .lede {
+    @apply text-base leading-relaxed text-muted-foreground sm:text-lg;
+  }
+  .table-shell {
+    @apply overflow-hidden rounded-xl border border-border bg-card;
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-muted;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-background/60 to-transparent;
+  }
+  .stat-value {
+    @apply text-2xl font-semibold tabular-nums tracking-tight sm:text-[1.75rem];
+  }
+  .nav-link {
+    @apply relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground;
+  }
+  .nav-link-active {
+    @apply text-foreground;
+  }
+  .sidebar-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-sidebar-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground;
+  }
+  .sidebar-link-active {
+    @apply bg-sidebar-accent text-sidebar-foreground shadow-xs;
+  }
+  .paper-texture {
+    background-image:
+      radial-gradient(hsl(var(--paper-ink) / 0.04) 1px, transparent 1px),
+      linear-gradient(180deg, hsl(var(--paper)) 0%, hsl(var(--paper)) 100%);
+    background-size: 14px 14px, 100% 100%;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .contain-layout { contain: layout paint; }
+  .gpu { transform: translateZ(0); backface-visibility: hidden; will-change: transform; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Accessibility: honour the OS reduced-motion preference across the whole app.
+   GSAP timelines and Framer Motion are also gated in JS (see animations/ and hooks). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
